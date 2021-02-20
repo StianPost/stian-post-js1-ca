@@ -4,27 +4,33 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 // get the id parameter from the query string
 const id = params.get('id');
+const animeDiv = document.querySelector('.animeDiv');
 
 const loading = document.querySelector('.loading');
 
-async function getCoin(coinID) {
+async function getAnime(animeID) {
   try {
-    const response = await fetch(
-      'https://api.coinlore.net/api/ticker/?id=' + coinID
-    );
+    const response = await fetch('https://kitsu.io/api/edge/anime/' + animeID);
     const result = await response.json();
+    const anime = result.data;
     loading.innerHTML = '';
-    document.querySelector('.singleCoin').style.display = 'block';
-    result.forEach((element) => {
-      document.title = element.name;
-      document.querySelector('.singleCoin').innerHTML = `
-        <h1> ${element.name}</h1>
-        <p>${element.symbol}</p>
-        <p>Rank: ${element.rank}</p>
-        <p>Price USD: ${element.price_usd}</p>
-        <p>Price BTC: ${element.price_btc}</p>
-        `;
-    });
+    console.log(anime);
+    let title = anime.attributes.titles.en;
+    if (!title) {
+      title = anime.attributes.titles.en_jp;
+    }
+    document.title = title;
+
+    animeDiv.innerHTML = `
+      <h1>${title}</h1>
+      <img src="${anime.attributes.posterImage.small}" alt="${anime.attributes.titles.en} Cover image" />
+      <p>Rating: ${anime.attributes.averageRating}/100</p>
+      <p>Episodes: ${anime.attributes.episodeCount}</p>
+      <p>Type: ${anime.attributes.subtype}</p>
+      <p>Age Rating: ${anime.attributes.ageRating}</p>
+      <p> ${anime.attributes.ageRatingGuide}</p>
+      <p>Synopsis: ${anime.attributes.synopsis} </p>
+    `;
   } catch (error) {
     console.log(error);
     document.querySelector('.alert').innerHTML = showAlertTouser(
@@ -37,4 +43,4 @@ async function getCoin(coinID) {
     }, 3000);
   }
 }
-getCoin(id);
+getAnime(id);
