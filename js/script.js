@@ -1,26 +1,33 @@
-const coinAPI = 'https://api.coinlore.net/api/tickers/';
-const coinCointainer = document.querySelector('.coinContainer');
+const animeAPI =
+  'https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=20';
+const animeCardCointainer = document.querySelector('.animeCardContainer');
 const loading = document.querySelector('.loading');
-let count = 0;
 
-async function getCoinAPI(url) {
+async function getAnimeAPI(url) {
   try {
     const response = await fetch(url);
     const result = await response.json();
     const resultArray = result.data;
-
+    console.log(resultArray);
     loading.innerHTML = '';
+
     resultArray.forEach((element) => {
-      count++;
-      let BGC = 'odd';
-      if (count % 2 === 0) {
-        BGC = 'even';
+      let title = element.attributes.titles.en;
+
+      if (!title) {
+        title = element.attributes.titles.en_jp;
       }
-      coinCointainer.innerHTML += `
-        <div class="coinCard ${BGC}">
-            <h2> ${element.name} </h2>
-            <p>Price USD: ${element.price_usd}$</p>
-            <a href="coinPage.html?id=${element.id}">Read More</a> 
+
+      animeCardCointainer.innerHTML += `
+        <div class="animeCard">
+            <h2> ${title} </h2>
+            <img src="${element.attributes.posterImage.small}" alt="${element.attributes.titles.en} Cover image" />
+            <p>Rating: ${element.attributes.averageRating}/100</p>
+            <p>Episodes: ${element.attributes.episodeCount}</p>
+            <p>Type: ${element.attributes.subtype}</p>
+            <p>Age Rating: ${element.attributes.ageRating}</p>
+            <p> ${element.attributes.ageRatingGuide}</p>
+            <a href="details.html?id=${element.id}">Read More</a> 
         </div>
         `;
     });
@@ -36,4 +43,4 @@ async function getCoinAPI(url) {
     }, 3000);
   }
 }
-getCoinAPI(coinAPI);
+getAnimeAPI(animeAPI);
