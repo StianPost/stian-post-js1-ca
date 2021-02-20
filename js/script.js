@@ -1,5 +1,5 @@
 const animeAPI =
-  'https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=20';
+  'https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=40';
 const animeCardCointainer = document.querySelector('.animeCardContainer');
 const loading = document.querySelector('.loading');
 
