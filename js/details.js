@@ -31,7 +31,7 @@ async function getAnime(animeID) {
       <h1>${title}</h1>
       <div class="animeUpperCard">
         <div class="animeImge">
-          <img src="${anime.attributes.posterImage.small}" alt="${anime.attributes.titles.en} Cover image" />
+          <img src="${anime.attributes.posterImage.original}" alt="${anime.attributes.titles.en} Cover image" />
         </div>
         <div class="animeInfo">
           <p>Rating: ${anime.attributes.averageRating}/100</p>
