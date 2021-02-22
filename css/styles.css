@@ -97,3 +97,27 @@ input[type='password'] {
   cursor: pointer;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
+
+.animeDiv {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.animeUpperCard {
+  display: flex;
+}
+.animeImg {
+  width: 300px;
+  margin-right: 5px;
+}
+.animeInfo {
+  margin-left: 5px;
+}
+.animeDiv p {
+  padding: 5px 0px;
+}
+
+.synopsis {
+  width: 80%;
+}

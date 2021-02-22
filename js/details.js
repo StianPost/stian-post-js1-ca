@@ -13,23 +13,39 @@ async function getAnime(animeID) {
     const response = await fetch('https://kitsu.io/api/edge/anime/' + animeID);
     const result = await response.json();
     const anime = result.data;
+    let title = anime.attributes.titles.en;
+    let nsfw = 'SFW';
+    let isNSFW = anime.attributes.nsfw;
     loading.innerHTML = '';
     console.log(anime);
-    let title = anime.attributes.titles.en;
+
     if (!title) {
       title = anime.attributes.titles.en_jp;
+    }
+    if (isNSFW) {
+      nsfw = 'NSFW';
     }
     document.title = title;
 
     animeDiv.innerHTML = `
       <h1>${title}</h1>
-      <img src="${anime.attributes.posterImage.small}" alt="${anime.attributes.titles.en} Cover image" />
-      <p>Rating: ${anime.attributes.averageRating}/100</p>
-      <p>Episodes: ${anime.attributes.episodeCount}</p>
-      <p>Type: ${anime.attributes.subtype}</p>
-      <p>Age Rating: ${anime.attributes.ageRating}</p>
-      <p> ${anime.attributes.ageRatingGuide}</p>
-      <p>Synopsis: ${anime.attributes.synopsis} </p>
+      <div class="animeUpperCard">
+        <div class="animeImge">
+          <img src="${anime.attributes.posterImage.small}" alt="${anime.attributes.titles.en} Cover image" />
+        </div>
+        <div class="animeInfo">
+          <p>Rating: ${anime.attributes.averageRating}/100</p>
+          <p>Episodes: ${anime.attributes.episodeCount}</p>
+          <p>Type: ${anime.attributes.subtype}</p>
+          <p>Age Rating: ${anime.attributes.ageRating}</p>
+          <p> ${anime.attributes.ageRatingGuide}</p>
+          <p>Start: ${anime.attributes.startDate}</p>
+          <p>End: ${anime.attributes.endDate}</p>
+          <p>!!!${nsfw}!!!</p>
+          <p>Status: ${anime.attributes.status}</p>
+        </div>
+      </div>
+      <p class="synopsis">Synopsis: ${anime.attributes.synopsis} </p>
     `;
   } catch (error) {
     console.log(error);
