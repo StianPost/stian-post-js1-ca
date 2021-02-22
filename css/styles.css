@@ -89,6 +89,7 @@ input[type='password'] {
 .animeCardContainer {
   display: flex;
   flex-wrap: wrap;
+  max-width: 1650px;
 }
 
 .animeCard {
@@ -135,7 +136,7 @@ input[type='password'] {
 .animeCardLink {
   width: 100%;
   background-color: lightblue;
-  height: 30px;
+  height: 40px;
   border-radius: 3px;
   display: flex;
   align-items: center;

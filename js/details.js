@@ -23,29 +23,30 @@ async function getAnime(animeID) {
       title = anime.attributes.titles.en_jp;
     }
     if (isNSFW) {
-      nsfw = 'NSFW';
+      nsfw = 'NSFW!';
     }
     document.title = title;
 
     animeDiv.innerHTML = `
       <h1>${title}</h1>
       <div class="animeUpperCard">
-        <div class="animeImge">
-          <img src="${anime.attributes.posterImage.original}" alt="${anime.attributes.titles.en} Cover image" />
+        <div>
+          <img class="animeImg" src="${anime.attributes.posterImage.original}" alt="${anime.attributes.titles.en} Cover image" />
         </div>
         <div class="animeInfo">
-          <p>Rating: ${anime.attributes.averageRating}/100</p>
-          <p>Episodes: ${anime.attributes.episodeCount}</p>
-          <p>Type: ${anime.attributes.subtype}</p>
-          <p>Age Rating: ${anime.attributes.ageRating}</p>
+          <p><span>Rating: </span>${anime.attributes.averageRating}/100</p>
+          <p><span>Episodes: </span>${anime.attributes.episodeCount}</p>
+          <p><span>Type: </span>${anime.attributes.subtype}</p>
+          <p><span>Age Rating: </span>${anime.attributes.ageRating}</p>
           <p> ${anime.attributes.ageRatingGuide}</p>
-          <p>Start: ${anime.attributes.startDate}</p>
-          <p>End: ${anime.attributes.endDate}</p>
-          <p>!!!${nsfw}!!!</p>
-          <p>Status: ${anime.attributes.status}</p>
+          <p><span>Start: </span>${anime.attributes.startDate}</p>
+          <p><span>End: </span>${anime.attributes.endDate}</p>
+          <p>${nsfw}</p>
+          <p><span>Status: </span>${anime.attributes.status}</p>
         </div>
       </div>
-      <p class="synopsis">Synopsis: ${anime.attributes.synopsis} </p>
+      <p><span>Synopsis</span></p>
+      <p class="synopsis">${anime.attributes.synopsis} </p>
     `;
   } catch (error) {
     console.log(error);
