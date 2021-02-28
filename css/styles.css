@@ -8,13 +8,37 @@ main {
   display: flex;
   flex-direction: column;
 }
+nav {
+  background-color: lightgreen;
+  border-radius: 0px 0px 12px 12px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 ul {
   display: flex;
 }
 li {
   list-style: none;
   margin: 5px 5px;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: darkblue;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+span {
+  font-weight: 500;
+}
+
 .danger {
   background-color: rgb(255 124 124);
   color: black;
@@ -84,6 +108,7 @@ input[type='password'] {
 .submitBtn:hover {
   cursor: pointer;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
 }
 
 .animeCardContainer {
@@ -96,6 +121,7 @@ input[type='password'] {
   width: 300px;
   min-height: 670px;
   border: blue 2px solid;
+  background-color: aliceblue;
   margin: 5px;
   padding: 5px;
   border-radius: 5px;
@@ -110,6 +136,11 @@ input[type='password'] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 70%;
+  background-color: aliceblue;
+  border-radius: 20px;
+  border: blue 2px solid;
+  padding: 10px;
 }
 .animeUpperCard {
   display: flex;
@@ -144,17 +175,6 @@ input[type='password'] {
   position: absolute;
   bottom: 0;
   left: 0;
-}
-a {
-  text-decoration: none;
-}
-a:hover {
-  color: darkblue;
-  font-weight: bold;
-}
-
-span {
-  font-weight: 500;
 }
 
 .verifyer {

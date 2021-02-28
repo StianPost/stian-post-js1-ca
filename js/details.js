@@ -14,7 +14,7 @@ async function getAnime(animeID) {
     const result = await response.json();
     const anime = result.data;
     let title = anime.attributes.titles.en;
-    let nsfw = 'SFW';
+    let nsfw = 'SFW?';
     let isNSFW = anime.attributes.nsfw;
     loading.innerHTML = '';
     console.log(anime);
@@ -38,14 +38,14 @@ async function getAnime(animeID) {
           <p><span>Episodes: </span>${anime.attributes.episodeCount}</p>
           <p><span>Type: </span>${anime.attributes.subtype}</p>
           <p><span>Age Rating: </span>${anime.attributes.ageRating}</p>
-          <p> ${anime.attributes.ageRatingGuide}</p>
-          <p><span>Start: </span>${anime.attributes.startDate}</p>
-          <p><span>End: </span>${anime.attributes.endDate}</p>
+          <p>${anime.attributes.ageRatingGuide}</p>
           <p>${nsfw}</p>
+          <p><span>Started: </span>${anime.attributes.startDate}</p>
+          <p><span>Ended: </span>${anime.attributes.endDate}</p>
           <p><span>Status: </span>${anime.attributes.status}</p>
         </div>
       </div>
-      <p><span>Synopsis</span></p>
+      <h2> Synopsis </h2>
       <p class="synopsis">${anime.attributes.synopsis} </p>
     `;
   } catch (error) {
