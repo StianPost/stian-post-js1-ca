@@ -53,6 +53,10 @@ submit.onclick = function (event) {
   } else {
     verification.classList.add('hide');
   }
+
+  setTimeout(function () {
+    verification.classList.add('hide');
+  }, 3000);
 };
 
 function validateEmail(emailAddress) {
