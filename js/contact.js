@@ -18,13 +18,13 @@ submit.onclick = function (event) {
   let emailValidation = false;
   let addressValidation = false;
 
-  if (testLength(name, 10)) {
+  if (testLength(name, 1)) {
     nameError.classList.add('hide');
     nameValidation = true;
   } else {
     nameError.classList.remove('hide');
   }
-  if (testLength(subject, 5)) {
+  if (testLength(subject, 10)) {
     subjectError.classList.add('hide');
     subjectValidation = true;
   } else {
