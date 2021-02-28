@@ -2,6 +2,7 @@ const nameError = document.querySelector('.nameError');
 const subjectError = document.querySelector('.subjectError');
 const emailError = document.querySelector('.emailError');
 const addressError = document.querySelector('.addressError');
+const verification = document.querySelector('.verifyer');
 
 const submit = document.querySelector('#submitBtn');
 
@@ -48,9 +49,9 @@ submit.onclick = function (event) {
     emailValidation &&
     addressValidation
   ) {
-    console.log('All good chief');
+    verification.classList.remove('hide');
   } else {
-    console.log('woops');
+    verification.classList.add('hide');
   }
 };
 
