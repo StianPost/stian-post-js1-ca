@@ -21,13 +21,13 @@ async function getAnimeAPI(url) {
       animeCardCointainer.innerHTML += `
         <div class="animeCard">
             <h2> ${title} </h2>
-            <img class="animeCardImg" src="${element.attributes.posterImage.original}" alt="${element.attributes.titles.en} Cover image" />
-            <p><span>Rating: </span>${element.attributes.averageRating}/100</p>
-            <p><span>Episodes: </span>${element.attributes.episodeCount}</p>
-            <p><span>Type: </span>${element.attributes.subtype}</p>
-            <p><span>Age Rating: </span>${element.attributes.ageRating}</p>
-            <p>${element.attributes.ageRatingGuide}</p>
-            <a href="details.html?id=${element.id}">
+              <img class="animeCardImg" src="${element.attributes.posterImage.original}" alt="${element.attributes.titles.en} Cover image" />
+              <p><span>Rating: </span>${element.attributes.averageRating}/100</p>
+              <p><span>Episodes: </span>${element.attributes.episodeCount}</p>
+              <p><span>Type: </span>${element.attributes.subtype}</p>
+              <p><span>Age Rating: </span>${element.attributes.ageRating}</p>
+              <p>${element.attributes.ageRatingGuide}</p>
+              <a href="details.html?id=${element.id}">
             <div class="animeCardLink">Read More</div>
             </a> 
         </div>
